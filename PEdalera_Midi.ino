@@ -157,10 +157,10 @@ switch (Boton) {
     digitalWrite(led5,LOW);
     break;
   case 4:
-    //Activo el Modo Scroll
-    // Activo el preset Angus Young (42A)
-    midiOut.sendControlChange(71,1,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(123,1); // send a MIDI Program Change command
+    //Activo el Modo Snapshot
+    // Activo el preset Stomp TrifectaCH_MeNHToR (39C)
+    midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
+    midiOut.sendProgramChange(116,1); // send a MIDI Program Change command
     Boton = 0;
     delay(2000);
     digitalWrite(led1,LOW);
@@ -170,10 +170,10 @@ switch (Boton) {
     digitalWrite(led5,LOW);
     break;
   case 5:
-    //Activo el Modo Scroll
-    // Activo el preset CRUNCH (38B)
-    midiOut.sendControlChange(71,1,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(112,1); // send a MIDI Program Change command
+    //Activo el Modo Snapshot
+    // Activo el preset Stomp Reserva (40A)
+    midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
+    midiOut.sendProgramChange(117,1); // send a MIDI Program Change command
     Boton = 0;
     delay(2000);
     digitalWrite(led1,LOW);
