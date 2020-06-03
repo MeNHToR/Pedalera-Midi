@@ -24,6 +24,7 @@
 #define led5        3     //led 5
 
 int Boton = 0;            //Variable para activar la señal Midi que corresponda al Boton pulsado
+int Afinacion = 0;        //Variable para ir pasando por las diferentes afinaciones configuradas
 
 /**************************************/
 
@@ -170,10 +171,36 @@ switch (Boton) {
     digitalWrite(led5,LOW);
     break;
   case 5:
-    //Activo el Modo Snapshot
-    // Activo el preset Stomp Reserva (40A)
-    midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(117,1); // send a MIDI Program Change command
+     // Cambiamos la "afinación" mediante los campos HeelPit y ToePitc del efecto PitchWham
+     //El efecto debe estar al principio de la cadena
+     // Dependiendo del valor que mandemos en el CC, tendrá un valor u otro.
+     // Las afinaciones que uso, de momento, son Standard, D Standard y F Standard.
+     // Meto esas 3 afinaciones en una rueda con un If y un ++ para poder pasar de una a otra
+     //Los valores están sacados sabiendo que el rango va desde -24 a 24, y los valores a enviar
+     // van de 0 a 127. Regla de 3 y prueba y error para ajustarlo.
+    
+    if (Afinacion == 0) {
+      //Afinación D Standard, -2 semitonos
+      midiOut.sendControlChange(10,59,1); // send a MIDI Control Change command
+      midiOut.sendControlChange(11,59,1); // send a MIDI Control Change command
+    }
+    else if (Afinacion == 1) {
+      //Afinación E Standard, 0 semitonos
+      midiOut.sendControlChange(10,64,1); // send a MIDI Control Change command
+      midiOut.sendControlChange(11,64,1); // send a MIDI Control Change command
+    }
+    else {
+      //Afinación F Standard, +1 semitono
+      midiOut.sendControlChange(10,67,1); // send a MIDI Control Change command
+      midiOut.sendControlChange(11,67,1); // send a MIDI Control Change command
+    }
+
+    Afinacion= Afinacion +1;              //Aumento el contador de afinación para hacer el ciclo entre cada afinación
+    
+    if (Afinacion > 2) {                  //Si el indice de la afinación pasa de 2, reinicio desde 0
+      //statement(s)
+      Afinacion = 0;
+    }
     Boton = 0;
     delay(2000);
     digitalWrite(led1,LOW);
