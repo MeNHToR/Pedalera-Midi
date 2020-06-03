@@ -133,9 +133,9 @@ switch (Boton) {
     break;
   case 2:
     //Activo el Modo Snapshot
-    // Activo el preset Stomp Trifecta (39A)
+    // Activo el preset MeNHToR Whammy (42A)
     midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(114,1); // send a MIDI Program Change command
+    midiOut.sendProgramChange(123,1); // send a MIDI Program Change command
     Boton = 0;
     delay(2000);
     digitalWrite(led1,LOW);
@@ -146,9 +146,9 @@ switch (Boton) {
     break;
   case 3:
     //Activo el Modo Snapshot
-    // Activo el preset Stomp TrifectaCH (39B)
+    // Activo el preset MeNHToR Chorus (42B)
     midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(115,1); // send a MIDI Program Change command
+    midiOut.sendProgramChange(124,1); // send a MIDI Program Change command
     Boton = 0;
     delay(2000);
     digitalWrite(led1,LOW);
@@ -159,9 +159,9 @@ switch (Boton) {
     break;
   case 4:
     //Activo el Modo Snapshot
-    // Activo el preset Stomp TrifectaCH_MeNHToR (39C)
+    // Activo el preset Reserva (42C)
     midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(116,1); // send a MIDI Program Change command
+    midiOut.sendProgramChange(125,1); // send a MIDI Program Change command
     Boton = 0;
     delay(2000);
     digitalWrite(led1,LOW);
