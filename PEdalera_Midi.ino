@@ -181,18 +181,18 @@ switch (Boton) {
     
     if (Afinacion == 0) {
       //Afinación D Standard, -2 semitonos
-      midiOut.sendControlChange(10,59,1); // send a MIDI Control Change command
-      midiOut.sendControlChange(11,59,1); // send a MIDI Control Change command
+      midiOut.sendControlChange(1,59,1); // send a MIDI Control Change command
+      //midiOut.sendControlChange(11,59,1); // send a MIDI Control Change command
     }
     else if (Afinacion == 1) {
       //Afinación E Standard, 0 semitonos
-      midiOut.sendControlChange(10,64,1); // send a MIDI Control Change command
-      midiOut.sendControlChange(11,64,1); // send a MIDI Control Change command
+      midiOut.sendControlChange(1,64,1); // send a MIDI Control Change command
+      //midiOut.sendControlChange(11,64,1); // send a MIDI Control Change command
     }
     else {
       //Afinación F Standard, +1 semitono
-      midiOut.sendControlChange(10,67,1); // send a MIDI Control Change command
-      midiOut.sendControlChange(11,67,1); // send a MIDI Control Change command
+      midiOut.sendControlChange(1,67,1); // send a MIDI Control Change command
+      //midiOut.sendControlChange(11,67,1); // send a MIDI Control Change command
     }
 
     Afinacion= Afinacion +1;              //Aumento el contador de afinación para hacer el ciclo entre cada afinación
