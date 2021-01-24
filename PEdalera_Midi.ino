@@ -121,23 +121,36 @@ void loop()
   
 switch (Boton) {
   case 1:
-    // Activar/Desactivar el Afinador
-    midiOut.sendControlChange(68,0,1); // send a MIDI Control Change command
+    //
+    //   x x
+    //    x
+    //   x o
+    //
+    //Activo el Modo Snapshot
+    // Activo el preset (42B)
+    midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
+    midiOut.sendProgramChange(124,1); // send a MIDI Program Change command
     Boton = 0;
-    delay(2000);
+    delay(1000);
     digitalWrite(led1,LOW);
     digitalWrite(led2,LOW);
     digitalWrite(led3,LOW);
     digitalWrite(led4,LOW);
     digitalWrite(led5,LOW);
     break;
+
   case 2:
     //Activo el Modo Snapshot
-    // Activo el preset MeNHToR Whammy (42A)
+    // Activo el preset (42A)
+    //
+    //   x x
+    //    x
+    //   o x
+    //
     midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
     midiOut.sendProgramChange(123,1); // send a MIDI Program Change command
     Boton = 0;
-    delay(2000);
+    delay(1000);
     digitalWrite(led1,LOW);
     digitalWrite(led2,LOW);
     digitalWrite(led3,LOW);
@@ -145,12 +158,15 @@ switch (Boton) {
     digitalWrite(led5,LOW);
     break;
   case 3:
-    //Activo el Modo Snapshot
-    // Activo el preset MeNHToR Chorus (42B)
-    midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
-    midiOut.sendProgramChange(124,1); // send a MIDI Program Change command
+    //
+    //   x x
+    //    o
+    //   x x
+    //
+    // Activar/Desactivar el Afinador
+    midiOut.sendControlChange(68,0,1); // send a MIDI Control Change command
     Boton = 0;
-    delay(2000);
+    delay(1000);
     digitalWrite(led1,LOW);
     digitalWrite(led2,LOW);
     digitalWrite(led3,LOW);
@@ -158,12 +174,17 @@ switch (Boton) {
     digitalWrite(led5,LOW);
     break;
   case 4:
+    //
+    //   x o
+    //    x
+    //   x x
+    //
     //Activo el Modo Snapshot
-    // Activo el preset Reserva (42C)
+    // Activo el preset (42C)
     midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
     midiOut.sendProgramChange(125,1); // send a MIDI Program Change command
     Boton = 0;
-    delay(2000);
+    delay(1000);
     digitalWrite(led1,LOW);
     digitalWrite(led2,LOW);
     digitalWrite(led3,LOW);
@@ -171,44 +192,24 @@ switch (Boton) {
     digitalWrite(led5,LOW);
     break;
   case 5:
-     // Cambiamos la "afinación" mediante los campos HeelPit y ToePitc del efecto PitchWham
-     //El efecto debe estar al principio de la cadena
-     // Dependiendo del valor que mandemos en el CC, tendrá un valor u otro.
-     // Las afinaciones que uso, de momento, son Standard, D Standard y F Standard.
-     // Meto esas 3 afinaciones en una rueda con un If y un ++ para poder pasar de una a otra
-     //Los valores están sacados sabiendo que el rango va desde -24 a 24, y los valores a enviar
-     // van de 0 a 127. Regla de 3 y prueba y error para ajustarlo.
-    
-    if (Afinacion == 0) {
-      //Afinación D Standard, -2 semitonos
-      midiOut.sendControlChange(1,59,1); // send a MIDI Control Change command
-      //midiOut.sendControlChange(11,59,1); // send a MIDI Control Change command
-    }
-    else if (Afinacion == 1) {
-      //Afinación E Standard, 0 semitonos
-      midiOut.sendControlChange(1,64,1); // send a MIDI Control Change command
-      //midiOut.sendControlChange(11,64,1); // send a MIDI Control Change command
-    }
-    else {
-      //Afinación F Standard, +1 semitono
-      midiOut.sendControlChange(1,67,1); // send a MIDI Control Change command
-      //midiOut.sendControlChange(11,67,1); // send a MIDI Control Change command
-    }
-
-    Afinacion= Afinacion +1;              //Aumento el contador de afinación para hacer el ciclo entre cada afinación
-    
-    if (Afinacion > 2) {                  //Si el indice de la afinación pasa de 2, reinicio desde 0
-      //statement(s)
-      Afinacion = 0;
-    }
+    //
+    //   o x
+    //    x
+    //   x x
+    //
+    //Activo el Modo Snapshot
+    // Activo el preset (41C)
+    midiOut.sendControlChange(71,3,1); // send a MIDI Control Change command
+    midiOut.sendProgramChange(122,1); // send a MIDI Program Change command
     Boton = 0;
-    delay(2000);
+    delay(1000);
     digitalWrite(led1,LOW);
     digitalWrite(led2,LOW);
     digitalWrite(led3,LOW);
     digitalWrite(led4,LOW);
     digitalWrite(led5,LOW);
     break;
+    
 }
 Boton = 0;
   
